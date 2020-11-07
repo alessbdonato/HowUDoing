@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
+    <script src="jStorage/jstorage.js"></script>
+    <style>
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+</style>
+
+    <script>
+      JSOTRAGE_TEST = {
+        /**
+         * insert_value
+         * takes data from form fields and stores it with jStorage
+         * @return
+         */
+        insert_value: function(){
+          var row = new Element("tr"),
+            key = $('key').value = 1,
+            val = $('val').value,
+            ttl = 60000
+            // 5 days 432.000000
+          $.jStorage.set(key, val);
+         
+          $.jStorage.setTTL(key, ttl);
+          
+          $('key').value = "";
+          $('val').value = "";
+          $('ttl').value = "";
+          this.reDraw();
+        },
+      
+        /**
+         * get_value
+         * alerts a value from jStorage with a key from a form field
+         * @return
+         */
+        get_value: function(){
+          var value = $.jStorage.get($F("key2"));
+          alert(value);
+          $('key2').value = "";
+        },
+      
+        /**
+         * flush_values
+         * clears all data
+         * @return
+         */
+        flush_values: function(){
+          $.jStorage.flush();
+          this.reDraw();
+        },
+      
+        /**
+         * reDraw
+         * fills table with data from jStorage
+         * @return
+         */
+        reDraw: function(){
+          var row, del, indx=$.jStorage.index(), valuetd;
+          $$("tr").each(function(c){c.remove();});
+
+
+          for(var i=0; i<indx.length; i++){
+
+            row = new Element("tr");
+
+            row.insert(new Element("td").update(indx[i]));
+
+            row.insert(new Element("div",{className:"container"}).update(indx[i]));
+
+            valuetd = new Element("div").update($.jStorage.get(indx[i]));
+
+            valuetd.setAttribute("colspan",2);
+
+            valuetd.colspan = 2;
+
+            row.insert(valuetd);
+
+            del = new Element("a",{href:"javascript:void(0)"}).update("DEL");
+
+
+            (function(i){
+              del.observe("click", function(){
+               $.jStorage.deleteKey(i);
+                JSOTRAGE_TEST.reDraw();
+              });
+
+
+            }).call(this,indx[i])
+            row.insert(new Element("td").insert(del));
+            $("tulemused").insert(row);
+          }
+
+
+        }
+      }
+
+      $.jStorage.listenKeyChange("test", function(key, action){
+        JSOTRAGE_TEST.reDraw();
+        alert(key+" "+action+" ("+$.jStorage.get(key, "~~")+")");
+      });
+
+      var hasFocus = false;
+      $.jStorage.subscribe("valchange", function(channel, payload){
+        if(window.hasFocus){
+          return;
+        }
+        $("val").value = payload;
+      });
+    </script>
+
+
+</head>
+<body>
+<h2>Chat Messages</h2>
+
+<tbody id="tulemused"></tbody>
+<tfoot>
+		<tr>
+			<td>
+				<div class="container">
+ 					<img src="bandmember.jpg" alt="Avatar" style="width:100%;">
+  					<p>Hello. How are you today?</p>
+  					<span class="time-right">11:00</span>
+				</div>
+			</td>
+		</tr>
+
+
+
+<div class="container darker">
+  <img src="bandmember.jpg" alt="Avatar" class="right" style="width:100%;">
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">11:01</span>
+</div>
+
+
+<td><input type="text" id="val" name="val" value="" style="width: 50%" onblur="window.hasFocus=false;" onfocus="window.hasFocus=true;" onkeyup="$.jStorage.publish('valchange', this.value);" onchange="$.jStorage.publish('valchange', this.value);"/></td>
+     
+      <td><a href="javascript:JSOTRAGE_TEST.insert_value()">  <input type='button' value='Send' /></a></td>
+<script>
+		// Fill the table with previously saved data
+		JSOTRAGE_TEST.reDraw();
+	</script>
+</body>
+</html>
