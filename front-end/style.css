@@ -121,5 +121,48 @@ li a:hover:not(.logo){
   box-sizing: border-box;
 }
 
+.tooltip button{
+  border: none;
+  outline: none;
+  height: 70px;
+  background: #e63946;
+  color: #fff;
+  font-size: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom:0;
+}
 
+.tooltip button:hover{
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
+
+.tooltip {
+  position: absolute;
+  bottom:0;
+  border-bottom: 10px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 380%;
+  left: 50%;
+  margin-left: -10px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
