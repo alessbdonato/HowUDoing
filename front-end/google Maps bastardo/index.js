@@ -4,6 +4,7 @@
 
   function initMap() {
     var startLoc = new google.maps.LatLng(41.89663574263758, 12.575416737500076);
+    
 
     map = new google.maps.Map(document.getElementById("map"), {
       center: startLoc,
