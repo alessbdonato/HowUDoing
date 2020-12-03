@@ -3,36 +3,16 @@
 <head>
     <meta charset="utf-8">
     <title>HuD¿ Registration</title>
-    <link rel="stylesheet" type="text/css" href="style_reg.css">
+    <link rel="stylesheet" type="text/css" href="public/css/rgst_style.css">
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
 
 
 <ul>
-      <li><a class="logo" id=logo href="HuD¿.html">HuD¿</a></li>
+      <li><a class="logo" id=logo href="/">HuD¿</a></li>
 </ul> 
 
 <br><br>
@@ -62,13 +42,11 @@ window.onclick = function(event) {
     <div class="column">
       <div class="card">
         <h2>Gender *</h2>
-        <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn" id="Gender" value="Gender">Select your choiche</button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="#home">Male</a>
-            <a href="#home">Female</a>
-            <a href="#home">Other</a>
-          </div>
+          <select type="text" id="gender">
+          <option value="1">Male</option>
+          <option value="2">Female</option>
+          <option value="3">Other</option>
+      </select>
         </div>
       </div>
     </div>
