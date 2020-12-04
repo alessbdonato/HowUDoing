@@ -7,11 +7,44 @@
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<script type="text/javascript">
+
+	var mycontent=new Array()
+	mycontent[0]="Still don't know what to do today?"
+	mycontent[1]="Check this out"
+	mycontent[2]="Nothing yet?"
+	mycontent[3]="Create your own event!"
+
+	var i=0
+	var y=1
+
+	function altercontent(){
+	dcontent.innerHTML=mycontent[i];
+	scontent.innerHTML=mycontent[y];
+	i=(i==mycontent.length-2)? 0 : i+2
+	y=(y==mycontent.length-1)? 1 : y+2
+	setTimeout("altercontent()", 3000)
+	}
+
+	window.onload=altercontent
+
+</script>
+
+
 <ul>
       <li><a class="logo" id=logo href="HuD¿.html">HuD¿</a></li>
 </ul> <br><br><br><br>
 
+
   <div class="row">
+
+    <div class="column">
+      <div class="card">
+      	<div id="dcontent" ></div>
+      </div>
+    </div>
+
     <div class="column">
       <div class="card">
         <h2>Login</h2>
@@ -23,6 +56,13 @@
         <a href="registration.html">Don't have an account? Sign Up</a><br>
       </div>
     </div>
+    
+    <div class="column">
+      <div class="card">
+		<div id="scontent" ></div>
+      </div>
+    </div>
+
   </div>
 
 
