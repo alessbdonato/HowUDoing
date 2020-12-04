@@ -119,6 +119,16 @@ li a {
   font-size: 16px;
 }
 
+.card button[type='submit']{
+  border: ridge;
+  border-bottom: 1px solid #000000;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #404040;
+  font-size: 16px;
+}
+
 input[type='submit']{
   border: none;
   outline: none;
