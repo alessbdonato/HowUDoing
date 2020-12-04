@@ -20,11 +20,11 @@
 	var y=1
 
 	function altercontent(){
-	dcontent.innerHTML=mycontent[i];
-	scontent.innerHTML=mycontent[y];
-	i=(i==mycontent.length-2)? 0 : i+2
-	y=(y==mycontent.length-1)? 1 : y+2
-	setTimeout("altercontent()", 3000)
+  	dcontent.innerHTML=mycontent[i];
+  	scontent.innerHTML=mycontent[y];
+  	i = ( i == mycontent.length-2) ? 0 : i + 2
+  	y = ( y == mycontent.length-1) ? 1 : y + 2
+  	setTimeout("altercontent()", 3000)
 	}
 
 	window.onload=altercontent
