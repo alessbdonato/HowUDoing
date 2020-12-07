@@ -208,3 +208,64 @@ li a:hover:not(.logo){
   cursor: pointer;
 }
 
+/* Modal style to create event */
+
+.card-modal{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  opacity: 0.8;
+  position: absolute;
+  top : 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.card-content{
+  width: 400px;
+  height: 550px;
+  background-color: white;
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.close-card {
+  position: absolute;
+  top : 0;
+  right : 14px;
+  font-size: 40px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.card-modal .card-content input[type='text'] {
+	width: 70%;
+	height: 40px;
+	font-size: 16px;
+	display: block;
+	margin: 15px auto;
+	border-radius: 4px;
+}
+
+
+.card-modal .card-content button{
+  width: 100px;
+  background: #e63946;
+  font-size: 25px;
+  border-radius: 4px;
+  border: ridge;
+  height: 50px;
+  color: #404040;
+  outline: none;
+  text-align: center;
+}
+
+.card-modal .card-content button:hover{
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
