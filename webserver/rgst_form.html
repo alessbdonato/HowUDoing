@@ -1,162 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>HuD¿ Registration</title>
-    <link rel="stylesheet" type="text/css" href="public/css/rgst_style.css">
-    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
-    <script src="./jStorage/jstorage.js"></script>
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <title>HuD¿ Registration</title>
+      <link rel="stylesheet" type="text/css" href="public/css/rgst_style.css">
+      <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
+      <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
+      <script src="./jStorage/jstorage.js"></script>
 
 
 
 
 
-</head>
-<body>
+  </head>
+  <body>
 
 
 
 
-<ul>
-      <li><a class="logo" id=logo href="/">HuD¿</a></li>
-</ul> 
+  <ul>
+        <li><a class="logo" id=logo href="/">HuD¿</a></li>
+  </ul> 
 
-<br><br>
-<form action="/authregistrer" method="POST">
-  <div class="row">
-    <div class="column">
-      <div class="card">
-        <h2>First Name</h2>
-        <input type="text" name="first_name" placeholder="Enter your First name">
+  <br><br>
+  <form action="/authregistrer" method="POST">
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <h2>First Name</h2>
+          <input type="text" name="first_name" placeholder="Enter your First name">
+        </div>
       </div>
-    </div>
 
-    <div class="column">
-      <div class="card">
-        <h2>Last Name</h2>
-        <input type="text" name="last_name" placeholder="Enter your last name">
+      <div class="column">
+        <div class="card">
+          <h2>Last Name</h2>
+          <input type="text" name="last_name" placeholder="Enter your last name">
+        </div>
       </div>
-    </div>
-    
-    <div class="column">
-      <div class="card">
-        <h2>Username *</h2>
-        <input type="text" name="username" placeholder="Enter your age">
+      
+      <div class="column">
+        <div class="card">
+          <h2>Username *</h2>
+          <input type="text" name="username" placeholder="Enter your age">
+        </div>
       </div>
-    </div>
-    
-    <div class="column">
-      <div class="card">
-        <h2>Gender *</h2>
-	        <select type="text" id="gender" name="gender" >
-			    <option value="1">Male</option>
-			    <option value="2">Female</option>
-			    <option value="3">Other</option>
-			   </select>
+      
+      <div class="column">
+        <div class="card">
+          <h2>Gender *</h2>
+  	        <select type="text" id="gender" name="gender" >
+  			    <option value="1">Male</option>
+  			    <option value="2">Female</option>
+  			    <option value="3">Other</option>
+  			   </select>
+          </div>
         </div>
       </div>
     </div>
+
+  <br><br><br>
+
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <h2>Email *</h2>
+          <input type="text" name="email" placeholder="Enter your email">
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h2>Password *</h2>
+          <input type="password" name="pw" placeholder="Enter your Password">
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h2>Age *</h2>
+          <input type="text" name="age" placeholder="Enter you age">
+        </div>
+      </div> 
+
+      <div class="column">
+        <div class="card">
+          <h2>Zone *</h2>
+         
+          <button type="button" id="findzone">Click here to find your zone</button>
+         
+        </div>
+      </div> 
+    </div>
+
+
+
+  <div id="searchZoneInfo" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <object  style="width: 100%; height: 92%;" data="searchZone.html"> </object>
+    </div>
+
   </div>
-
-<br><br><br>
-
-  <div class="row">
-    <div class="column">
-      <div class="card">
-        <h2>Email *</h2>
-        <input type="text" name="email" placeholder="Enter your email">
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="card">
-        <h2>Password *</h2>
-        <input type="password" name="pw" placeholder="Enter your Password">
-      </div>
-    </div>
     
-    <div class="column">
-      <div class="card">
-        <h2>Age *</h2>
-        <input type="text" name="age" placeholder="Enter you age">
-      </div>
-    </div> 
-
-    <div class="column">
-      <div class="card">
-        <h2>Zone *</h2>
-       
-        <button type="button" id="findzone">Click here to find your zone</button>
-       
-      </div>
-    </div> 
-  </div>
-
-
-
-<div id="searchZoneInfo" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <object  style="width: 100%; height: 92%;" data="searchZone.html"> </object>
-  </div>
-
-</div>
-  
-<input  type="text" style="display: none;" name = "latitude" id = "latitude">
-<input  type="text" style="display: none;" name = "longitude" id = "longitude">
-<input type="text" style="display: none;" name = "rad" id="rad">
+  <input  type="text" style="display: none;" name = "latitude" id = "latitude">
+  <input  type="text" style="display: none;" name = "longitude" id = "longitude">
+  <input type="text" style="display: none;" name = "rad" id="rad">
 
   <p>* Required fields</p>
 
-<input type="submit" name="" value=' Submit '><br>
-</form>
+  <input type="submit" name="" value=' Submit '><br>
+  </form>
 
 
-  <script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("searchZoneInfo");
 
-      // Get the modal
-      var modal = document.getElementById("searchZoneInfo");
+        // Get the button that opens the modal
+        var btn = document.getElementById("findzone");
 
-      // Get the button that opens the modal
-      var btn = document.getElementById("findzone");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
 
-      // When the user clicks the button, open the modal 
-      btn.onclick = function() {
-        modal.style.display = "block";
-
-      }
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-        modal.style.display = "none";
-        document.getElementById("latitude").value =  $.jStorage.get("cordLatitute");
-        document.getElementById("longitude").value =  $.jStorage.get("cordLongitude");
-        document.getElementById("rad").value =  $.jStorage.get("cordRadianti");
-      }
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
           modal.style.display = "none";
+          document.getElementById("latitude").value =  $.jStorage.get("cordLatitute");
+          document.getElementById("longitude").value =  $.jStorage.get("cordLongitude");
+          document.getElementById("rad").value =  $.jStorage.get("cordRadianti");
+        }
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+            document.getElementById("latitude").value =  $.jStorage.get("cordLatitute");
+            document.getElementById("longitude").value =  $.jStorage.get("cordLongitude");
+            document.getElementById("rad").value =  $.jStorage.get("cordRadianti");
+
+          }
+        
 
         }
-      }
 
-    
+      
 
 
-  </script>
-
+    </script>
 
 
 
 
-</body>
-</html>
+
+  </body>
+  </html>

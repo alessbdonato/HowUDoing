@@ -1,79 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>HuD¿ Login</title>
-    <link rel="stylesheet" type="text/css" href="public/css/lg_style.css">
-    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
-</head>
-<body>
-  <script type="text/javascript">
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <title>HuD¿ Login</title>
+      <link rel="stylesheet" type="text/css" href="public/css/lg_style.css">
+      <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <script type="text/javascript">
 
-  var mycontent=new Array()
-  mycontent[0]="Still don't know what to do today?"
-  mycontent[1]="Check this out"
-  mycontent[2]="Nothing yet?"
-  mycontent[3]="Create your own event!"
+    var mycontent=new Array()
+    mycontent[0]="Still don't know what to do today?"
+    mycontent[1]="Check this out"
+    mycontent[2]="Nothing yet?"
+    mycontent[3]="Create your own event!"
 
-  var i=0
-  var y=1
+    var i=0
+    var y=1
 
-  function altercontent(){
-    dcontent.innerHTML = "<span id='messageInnerD'>"+mycontent[i]+"</span>";
-    scontent.innerHTML = "<span id='messageInnerS'>"+mycontent[y]+"</span>";
-    i = ( i == mycontent.length-2) ? 0 : i + 2
-    y = ( y == mycontent.length-1) ? 1 : y + 2
-    setTimeout("altercontent()", 3000)
-  }
+    function altercontent(){
+      dcontent.innerHTML = "<span id='messageInnerD'>"+mycontent[i]+"</span>";
+      scontent.innerHTML = "<span id='messageInnerS'>"+mycontent[y]+"</span>";
+      i = ( i == mycontent.length-2) ? 0 : i + 2
+      y = ( y == mycontent.length-1) ? 1 : y + 2
+      setTimeout("altercontent()", 3000)
+    }
 
-  window.onload = altercontent
+    window.onload = altercontent
 
-</script>
+  </script>
 
-<ul>
-      <li><a class="logo" id=logo href="/">HuD¿</a></li>
-</ul> <br><br><br><br>
-
-  <div class="row">
-    <div class="column">
-      <div class="card">
-        <div id="dcontent" ></div>
-      </div>
-    </div>    
-    <div class="column">
-      <div class="card">
-        <h2>Login</h2>
-        <input type="text" name="" placeholder="Enter your Email"><br><br>
-        <input type="password" name="" placeholder="Enter your password">
-        <br><br>
-        <input type="submit" name="" value='Login'><br><br>
-        <a href="#">Forgot password? Reset</a><br>
-        <a href="/registration">Don't have an account? Sign Up</a><br>
-      </div>
-    </div>
-
+  <ul>
+  <li><a class="logo" id=logo href="/">HuD¿</a></li>
+  </ul> <br><br><br><br>
+   <form action="/auth" method="POST">
+    <div class="row">
       <div class="column">
-      <div class="card">
-         <div id="scontent" ></div>
+        <div class="card">
+          <div id="dcontent" ></div>
+        </div>
+      </div>    
+      <div class="column">
+        <div class="card">
+          <h2>Login</h2>
+          <input type="text" name="email" placeholder="Enter your Email"><br><br>
+          <input type="password" name="pw" placeholder="Enter your password">
+          <br><br>
+          <input type="submit" name="" value='Login'><br><br>
+          <a href="#">Forgot password? Reset</a><br>
+          <a href="/registration">Don't have an account? Sign Up</a><br>
+        </div>
+      </div>
+
+        <div class="column">
+        <div class="card">
+           <div id="scontent" ></div>
+        </div>
       </div>
     </div>
-  </div>
+     </form>
 
-<script>
-  $.ajax({
-       ....
-      datatype: "json", // expecting JSON to be returned
+  <script>
+    $.ajax({
+         ....
+        datatype: "json", // expecting JSON to be returned
 
-      success: function (result) {
-          console.log(result);
-          if(result.status == 200){
-              alert("Registrazione avvenuta con succeso")
-          }
-      },
-      error: function(result){
-          console.log(result);
-      }
-  });
-</script>
-</body>
-</html>
+        success: function (result) {
+            console.log(result);
+            if(result.status == 200){
+                alert("Registrazione avvenuta con succeso")
+            }
+        },
+        error: function(result){
+            console.log(result);
+        }
+    });
+  </script>
+  </body>
+  </html>
