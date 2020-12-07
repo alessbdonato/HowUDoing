@@ -19,14 +19,14 @@
   var y=1
 
   function altercontent(){
-    dcontent.innerHTML=mycontent[i];
-    scontent.innerHTML=mycontent[y];
+    dcontent.innerHTML = "<span id='messageInnerD'>"+mycontent[i]+"</span>";
+    scontent.innerHTML = "<span id='messageInnerS'>"+mycontent[y]+"</span>";
     i = ( i == mycontent.length-2) ? 0 : i + 2
     y = ( y == mycontent.length-1) ? 1 : y + 2
     setTimeout("altercontent()", 3000)
   }
 
-  window.onload=altercontent
+  window.onload = altercontent
 
 </script>
 
@@ -54,11 +54,26 @@
 
       <div class="column">
       <div class="card">
-    <div id="scontent" ></div>
+         <div id="scontent" ></div>
       </div>
     </div>
   </div>
 
+<script>
+  $.ajax({
+       ....
+      datatype: "json", // expecting JSON to be returned
 
+      success: function (result) {
+          console.log(result);
+          if(result.status == 200){
+              alert("Registrazione avvenuta con succeso")
+          }
+      },
+      error: function(result){
+          console.log(result);
+      }
+  });
+</script>
 </body>
 </html>

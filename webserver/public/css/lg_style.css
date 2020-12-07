@@ -120,3 +120,84 @@ input[type='submit']:hover{
   color: #ffc107;
 }
 
+
+#messageInnerD { opacity: 0; }
+
+#messageInnerD {
+    font-size: 20px;
+    font-style: bold;
+    opacity: 1;
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn; 
+    animation-duration: 22.5s;   
+    -webkit-animation-duration: 0.5s;
+    animation-timing-function: ease-in-out; 
+    -webkit-animation-timing-function: ease-in-out;     
+    visibility: visible !important; 
+}
+
+
+
+
+#messageInnerS { opacity: 0; }
+
+#messageInnerS {
+    font-style: bold;
+    font-size: 20px;
+    opacity: 1;
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn; 
+    animation-duration: 22.5s;   
+    -webkit-animation-duration: 0.4s;
+    animation-timing-function: ease-in-out; 
+    -webkit-animation-timing-function: ease-in-out;     
+    visibility: visible !important; 
+}
+
+
+
+
+
+
+
+@keyframes fadeIn {
+    0% {
+        transform: scale(0);
+        opacity: 0.0;       
+    }
+    60% {
+        transform: scale(1.1);
+
+    }
+    80% {
+        transform: scale(0.9);
+        opacity: 1; 
+    }   
+    100% {
+        transform: scale(1);
+        opacity: 1; 
+    }
+
+}
+
+
+
+
+
+@-webkit-keyframes fadeIn {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0.0;       
+    }
+    60% {
+        -webkit-transform: scale(1.1);
+    }
+    80% {
+        -webkit-transform: scale(0.9);
+        opacity: 1; 
+    }   
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1; 
+    }
+}

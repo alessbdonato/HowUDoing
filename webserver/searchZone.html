@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drawing Tools</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfsJrqMPTWkWn6mf8U3jKBHH7VvqVkDQo&callback=initMap&libraries=drawing&v=weekly"
+      defer
+    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=geometry"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
+    <script src="js/gmaps-lat-lng-radius.js"></script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&callback=initMap"></script>
+     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="public/css/MapsStyle.css" />
+    <script src="./apigmaps.js"></script>
+
+
+  </head>
+  <body>
+    
+     
+
+    <div id="shape-input" class="controls">
+      <div class="shape-option selected" data-geo-type="circle"></div>
+     
+    </div>
+
+    <div id="output-container" class="controls">
+      <button class="copybtn" data-clipboard-target="#pos-output"><img class="clippy" src="https://clipboardjs.com/assets/images/clippy.svg" width="12" alt="Copy to clipboard"></button>
+      <div id="pos-output">Start by searching for the city...</div>
+
+    </div>
+
+    <div id="map"></div>
+
+  </body>
+</html>
