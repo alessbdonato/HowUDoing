@@ -37,7 +37,7 @@
 <div class="row">
 <% for(var i = 0; i < event.length; i++) { %>
     <div class="column">
-      <div class="card" id="clickmodal">
+      <div class="card" id="<%= i %>">
         <h3 ><%= event[i].event_title %></h3>
         <p>Price: <%= event[i].price %></p><br>
         <p> Desc <%= event[i].full_text %></p><br>         
@@ -64,13 +64,31 @@
       <button id="Creation" type="button" onclick="">+</button> 
   </div>
 
-  <!-- Modal Section -->
-  <div class="bg-modal">
+
+
+
+
+
+
+
+
+<% for(var i = 0; i < event.length; i++) { %>
+  <div class="bg-modal" id="bg<%=i%>">
     <div class="modal-content">
-      
-      <div class="close">+</div>
+          <p id= 'p<%=i%>'>Event title: <%=event[i].event_title %></p>
+          <p id= 'p<%=i%>'>Category: <%=event[i].categoria %></p>
+          <p id= 'p<%=i%>'>Owner name: <%=event[i].name %></p>
+          <p id= 'p<%=i%>'>Price: <%=event[i].price %></p>
+          
+      <div class="close" id = "close<%=i%>">+</div>
     </div>
   </div>
+ <% } %>
+
+
+
+
+
 
   <div class="card-modal">
     <div class="card-content">
@@ -88,19 +106,28 @@
   </div>
 
   <!-- script for displaying card description -->
-  <script type="text/javascript">
-    
-    document.getElementById('clickmodal').addEventListener('click', function(){
-      document.querySelector('.bg-modal').style.display = 'flex';
-      document.querySelector('body').style.overflow = 'hidden';
-    });
 
-    document.querySelector('.close').addEventListener('click', function(){
-      document.querySelector('.bg-modal').style.display = 'none';
+    <% for(var i = 0; i < event.length; i++) { %>
+    <script> 
+      document.getElementById('<%=i%>').addEventListener('click', function(){
+      document.getElementById('bg<%=i%>').style.display = 'flex';
+      document.querySelector('body').style.overflow = 'hidden';
+      });
+    </script>
+     <%  } %>
+
+
+    <% for(var i = 0; i < event.length; i++) { %>
+    <script>
+    document.getElementById('close<%=i%>').addEventListener('click', function(){
+      document.getElementById('bg<%=i%>').style.display = 'none';
       document.querySelector('body').style.overflow = 'auto';
     });
 
   </script>
+    <%  } %>
+
+
 
   <!-- script for displaying card description -->
   <script type="text/javascript">

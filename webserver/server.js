@@ -45,7 +45,8 @@
 					var longitude = req.session.zone.split(";")[1];
 					var radianti = req.session.zone.split(";")[2];
 				
-					var queryZone = "SELECT * FROM post";
+					var queryZone = "SELECT event_title,full_text,price,event_data,categoria,post.zone,name FROM post INNER JOIN user ON fk_organizer = user.id INNER JOIN eventtype on fk_event_type = eventtype.id_tipoevento";
+
 					/*con.query(queryZone,function(errorZone, resultsZone) {
 							if (resultsZone.length > 0) {
 								getCloserEvents(resultsZone[3].zone,latitude,longitude,radianti)
@@ -59,11 +60,12 @@
 					var zonesent= [];
 					if (resultsZone.length > 0) {
 								resultsZone.forEach(function(row){
-								zonesent.push(getCloserEvents(row,latitude,longitude,radianti))
-								 
+								zonesent.push(getCloserEvents(row,latitude,longitude,radianti))							 
 						});
 								console.log(zonesent);
 							}
+					zonesent = zonesent.filter(function (el) { return el != undefined; });
+		
 					res.render(path.join(__dirname, 'HuD¿.ejs'), {
 					  isLoggedIn: req.session.loggedin,
 					  user : req.session.username,
@@ -97,7 +99,6 @@
 					if (((parseFloat(x) - parseFloat(our_lng))*(parseFloat(x) - parseFloat(our_lng))) + ((parseFloat (y) - parseFloat(our_lat))* (parseFloat (y) - parseFloat(our_lat)))  < (parseFloat(our_rad)*parseFloat(our_rad))){
 						return stringCoords;
 					}
-			
 				}
 
 
@@ -133,8 +134,6 @@
 				    console.log(query)
 				    executeQuery (res, query);
 				});
-
-
 
 
 
