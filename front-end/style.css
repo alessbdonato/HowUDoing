@@ -4,37 +4,71 @@ body {
   overflow:auto;
 }
 
-
-ul {
+.navbar {
   list-style-type: none;
   font-size: 20px;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #fff; /* #fff bianco */
-
+  background-color: #f1f1f1;; /* #fff bianco */
 }
 
-li {
-  float: left;
-  font-size: 20px;
-}
-
-
-
-li a {
-  display: block;
-  color: black;
+.navbar a {
+  display: inline-block;
+  float: center;
   text-align: center;
-  padding: 16px 66px;
+  padding: 20px 80px;
   text-decoration: none;
-  line-height: 45px;
+  line-height: 30px;
+}
+
+.dropdown {
+	float: right;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.dropbtn {
+  font-size: 24px;  
+  border:none;
+  outline: none;
+  color: black;
+  padding: 24px 24px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
 
-li a:hover:not(.logo){
+.dropdown-content {
+  float: right;
+  display: none;
+  position: absolute;
+  border : none;
+  border-radius: 16px;
+  background-color: #f1f1f1;
+  padding: 10px 24px;
+  min-width: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: right;
+  background-color: inherit;
+  border-radius: 24px;
+  color: black;
+  padding: 10px 24px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
   background-color: rgb(190, 193, 199);
-} 
+  border-radius: 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;}
 
 /* width */
 ::-webkit-scrollbar {
@@ -62,11 +96,17 @@ li a:hover:not(.logo){
   border: none;
   outline: none;
   height: 80px;
-  background: #fff;
+  background: #f1f1f1;
   color: #000000;
   font-size: 20px;
   border-radius: 20px;
   font-weight: bold;
+}
+
+.active:hover{
+	border-radius: 24px;
+	cursor: pointer;
+	background-color: #fff;
 }
 
 
@@ -74,7 +114,6 @@ li a:hover:not(.logo){
   color: #e63946;
   font-family: Berkshire Swash;
   font-size: 65px;
-
   text-align: center;
 }
 
