@@ -27,19 +27,21 @@
 
   <div class="row">
   	<div class="column">
-  	<div class="card" contenteditable='false'>
+  	<div class="card">
   		<form >
 		<div id="profile-container">
    			<image id="profileImage" src="http://lorempixel.com/100/100" />
 		</div>
-		<button id="Edit" style='float: right' type='button' ng-click="edit(item)">Edit</button>
+		<button id="Edit" style='float: right' type='button'>Edit</button><br>
 		<input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
-		<p>Nome</p>
-		<p>Cognome</p>
-		<p>Età</p>
-		<p>Bio</p>
-		<p>Profilo Instagram</p>
-		<div class="edited" style="display: none">
+		<div>
+		<p contenteditable="true">Nome</p>
+		<p contenteditable="true">Cognome</p>
+		<p contenteditable="true">Età</p>
+		<p contenteditable="true">Bio</p>
+		<p contenteditable="true">Profilo Instagram</p>
+		</div>
+		<div class="edited" style="display:none" >
 		<input id="change" type="submit" name="" value='Submit'><br>
 		</div>
 		</form>
@@ -70,12 +72,10 @@
   
   document.getElementById('Edit').addEventListener('click', function(){
     document.querySelector('.edited').style.display = 'flex';
-    document.querySelector('.card').style.contenteditable="true";
   });
 
   document.getElementById('change').addEventListener('click', function(){
     document.querySelector('.edited').style.display = 'none';
-    document.querySelector('.card').style.contenteditable="false";
   });
 
 </script>
