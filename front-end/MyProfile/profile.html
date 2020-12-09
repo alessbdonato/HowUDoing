@@ -28,20 +28,27 @@
   <div class="row">
   	<div class="column">
   	<div class="card">
-  		<form >
+  		<form method="POST" action="/edit">
 		<div id="profile-container">
-   			<image id="profileImage" src="http://lorempixel.com/100/100" />
+   			<image id="profileImage" src="http://lorempixel.com/100/102" />
 		</div>
-		<button id="Edit" style='float: right' type='button'>Edit</button><br>
+		<button id="Edit" style='float: right' type='button'>Edit</button><br> 
 		<input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
 		<div>
-		<p contenteditable="true">Nome</p>
-		<p contenteditable="true">Cognome</p>
-		<p contenteditable="true">Età</p>
-		<p contenteditable="true">Bio</p>
-		<p contenteditable="true">Profilo Instagram</p>
+		<div class="data">
+			<h3>Nome</h3> 
+		<p id='editing1' contenteditable="false">Nome</p>
+			<h3>Cognome</h3>
+		<p id='editing2' contenteditable="false">Cognome</p>
+			<h3>Età</h3>
+		<p id='editing3' contenteditable="false">Età</p>
+			<h3>Bio</h3>
+		<p id='editing4' contenteditable="false" >Bio</p>
+			<h3>Profilo Instagram</h3>
+		<p id='editing5' contenteditable="false">Profilo Instagram</p>
 		</div>
-		<div class="edited" style="display:none" >
+		</div>
+		<div class="edited" style="display:none" > 
 		<input id="change" type="submit" name="" value='Submit'><br>
 		</div>
 		</form>
@@ -72,10 +79,20 @@
   
   document.getElementById('Edit').addEventListener('click', function(){
     document.querySelector('.edited').style.display = 'flex';
+    document.getElementById('editing1').contentEditable='true';
+    document.getElementById('editing2').contentEditable='true';
+    document.getElementById('editing3').contentEditable='true';
+    document.getElementById('editing4').contentEditable='true';
+    document.getElementById('editing5').contentEditable='true';
   });
 
   document.getElementById('change').addEventListener('click', function(){
     document.querySelector('.edited').style.display = 'none';
+    document.getElementById('editing1').contentEditable='false';
+    document.getElementById('editing2').contentEditable='false';
+    document.getElementById('editing3').contentEditable='false';
+    document.getElementById('editing4').contentEditable='false';
+    document.getElementById('editing5').contentEditable='false';
   });
 
 </script>
