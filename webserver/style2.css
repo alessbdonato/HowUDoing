@@ -286,15 +286,16 @@ li a:hover:not(.logo){
 }
 
 /* The Close Button */
-.close {
+.close2 {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  transform: rotate(45deg);
 }
 
-.close:hover,
-.close:focus {
+.close2:hover,
+.close2:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

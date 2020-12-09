@@ -27,16 +27,22 @@
 
   <div class="row">
   	<div class="column">
-  		<div class="card">
+  	<div class="card" contenteditable='false'>
+  		<form >
 		<div id="profile-container">
    			<image id="profileImage" src="http://lorempixel.com/100/100" />
 		</div>
+		<button id="Edit" style='float: right' type='button' ng-click="edit(item)">Edit</button>
 		<input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
 		<p>Nome</p>
 		<p>Cognome</p>
 		<p>Età</p>
 		<p>Bio</p>
 		<p>Profilo Instagram</p>
+		<div class="edited" style="display: none">
+		<input id="change" type="submit" name="" value='Submit'><br>
+		</div>
+		</form>
   	</div>
   </div>
   </div>
@@ -58,6 +64,21 @@
 	});
 </script>
 
+<!-- script for displaying card description -->
+
+<script type="text/javascript">
+  
+  document.getElementById('Edit').addEventListener('click', function(){
+    document.querySelector('.edited').style.display = 'flex';
+    document.querySelector('.card').style.contenteditable="true";
+  });
+
+  document.getElementById('change').addEventListener('click', function(){
+    document.querySelector('.edited').style.display = 'none';
+    document.querySelector('.card').style.contenteditable="false";
+  });
+
+</script>
 
 
 
