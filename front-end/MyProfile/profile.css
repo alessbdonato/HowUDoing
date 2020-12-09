@@ -183,5 +183,18 @@ input[type='text']:hover{
   padding-top: 30px;
 }
 
+.card button[id='Edit']{
+    width: 25px;
+    height: 25px;
+    border :none;
+    float: right;
+    cursor: pointer;
+}
+.card img {
+    width: 20px;
+    height: 20px;
+    text-align: center
+}
+
 
 
