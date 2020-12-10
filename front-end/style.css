@@ -10,22 +10,23 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #f1f1f1;; /* #fff bianco */
+  background-color: #f1f1f1;
 }
 
 .navbar a {
   display: inline-block;
   float: center;
   text-align: center;
-  padding: 20px 80px;
+  padding: 20px 60px;
   text-decoration: none;
   line-height: 30px;
 }
 
 .dropdown {
-	float: right;
+  float: right;
   overflow: hidden;
-  border-radius: 24px;
+  padding: 20px 60px;
+  background-color: inherit;
 }
 
 .dropbtn {
@@ -33,7 +34,6 @@ body {
   border:none;
   outline: none;
   color: black;
-  padding: 24px 24px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -41,24 +41,20 @@ body {
 
 
 .dropdown-content {
-  float: right;
+  float: left;
   display: none;
   position: absolute;
   border : none;
-  border-radius: 16px;
   background-color: #f1f1f1;
   padding: 10px 24px;
   min-width: 16px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
   float: right;
-  background-color: inherit;
-  border-radius: 24px;
-  color: black;
-  padding: 10px 24px;
+  background-color: inherit;  color: black;
+  padding: 10px 10px;
   text-decoration: none;
 }
 
