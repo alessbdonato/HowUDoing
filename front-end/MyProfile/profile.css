@@ -120,10 +120,10 @@ h3 {
   box-sizing: border-box;
 }
 
-.card input[type='text']{
+.card input[type='submit']{
   border: none;
-  border-bottom: 1px solid #fff;
-  background: transparent;
+  border-radius: 4px;
+  background: #e63946;
   outline: none;
   height: 40px;
   color: #404040;
@@ -131,7 +131,7 @@ h3 {
 }
 
 
-input[type='text']:hover{
+input[type='submit']:hover{
   cursor: pointer;
   background: #ffc107;
   color: #000;
