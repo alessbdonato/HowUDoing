@@ -27,7 +27,7 @@ var dbConfig = {
 	database: 'db_hud'
 };
 
-//se
+//
 app.use(session({
 	secret: 'asdgfva5',
 	resave: true,
@@ -46,15 +46,14 @@ con.connect(function(err) {
 });
 
 
-
+//endpoint che definisce il reindirizzamento per la home page
 app.get('/', (req, res) => {
-	
- 	res.redirect('/homepage');
 
+ 	res.redirect('/homepage');
 });
 
 
-
+//metodo delete di un evento
 app.delete("/delevents/:eventID", (req, result) => {
 	con.query(`DELETE FROM post WHERE id = ${req.params.eventID}`, (err, res) => {
 		if (err) {
@@ -73,7 +72,7 @@ app.delete("/delevents/:eventID", (req, result) => {
 	});
 });
 
-//GET Event with id
+//recupero le informazioni dell'evento con id 'eventID'
 app.get("/events/:eventID", (req, result) => {
 	con.query(`SELECT * FROM post WHERE id = ${req.params.eventID}`, (err, res) => {
 		if (err) {
@@ -90,8 +89,7 @@ app.get("/events/:eventID", (req, result) => {
 	});
 });
 
-//UPDATE Event with id from FORM
-
+//Aggiorno l'evento nel db con ID 'eventID'
 app.put("/updatevents/:eventID", (req, result) => {
 	con.query(`UPDATE post SET full_text = ?, price =  ? WHERE id = ${req.params.eventID}`, [req.query.newname, req.query.newprice], (err, res) => {
 		if (err) {
@@ -108,6 +106,8 @@ app.put("/updatevents/:eventID", (req, result) => {
 	})
 });
 
+
+//end point che permette l'inserimento dell'evento nel db
 app.post("/create_event", (req, res)  => {
 	var queryCords = req.body.latitude + ";" + req.body.longitude + ";" + req.body.rad;
 	console.log(req.session)
@@ -143,7 +143,6 @@ app.get('/homepage', (req, res) => {
 		})
 	} else {
 		console.log("EFFETTUA IL LOGIN")
-		//res.send('Please login to view this page!');
 		res.sendFile(path.join(__dirname, 'index.html'));
 	}
 });
