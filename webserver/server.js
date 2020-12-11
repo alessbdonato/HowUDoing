@@ -14,9 +14,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.use(express.static(__dirname));
-app.set('view engine', 'ejs');
 
+app.use(express.static(__dirname)); //dico al servizio di utilizzare i file statici in questo percorso
+app.set('view engine', 'ejs'); //preparo il servizio a renderizzare i template .ejs
+
+
+//definisco i dati di configurazione per il database
 var dbConfig = {
 	user: 'root',
 	password: '',
@@ -24,21 +27,25 @@ var dbConfig = {
 	database: 'db_hud'
 };
 
+//se
 app.use(session({
 	secret: 'asdgfva5',
 	resave: true,
 	saveUninitialized: true,
+})); 
+
+app.use(router); //preparo il servizio ad utilizzare il reindirizzarmento da un url ad una pagina
 
 
-}));
-app.use(router);
 
+//tentativo di connessione al database
 var con = sql.createConnection(dbConfig);
-
 con.connect(function(err) {
 	if (err) throw err;
 	console.log("DB correttamente connesso!");
 });
+
+
 
 app.get('/', (req, res) => {
 	
@@ -56,7 +63,6 @@ app.delete("/delevents/:eventID", (req, result) => {
 			return;
 		}
 		if (res.affectedRows == 0) {
-			// not found Customer with the id
 			result({
 				kind: "not_found"
 			}, null);
@@ -164,7 +170,7 @@ app.get('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
 	 req.session.destroy(() => {
-   req.session=  null;
+   req.session =  null;
    res.redirect("/"); 
   });
 });
