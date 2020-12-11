@@ -68,24 +68,6 @@ script che permette l'animazione riguardante le frasi ai lati del login
     </div>
      </form>
 
-<!--
-script che invia messaggio di errore se i dati inseriti risultano errati, di successo altrimenti
--->
-  <script>
-    $.ajax({
-         ....
-        datatype: "json", // expecting JSON to be returned
 
-        success: function (result) {
-            console.log(result);
-            if(result.status == 200){
-                alert("Registrazione avvenuta con succeso")
-            }
-        },
-        error: function(result){
-            console.log(result);
-        }
-    });
-  </script>
   </body>
   </html>
