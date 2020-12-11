@@ -1,3 +1,6 @@
+<!--
+Questa è la pagina di registrazione in cui vengono inseriti i dati degli utenti e inviati al database
+-->
   <!DOCTYPE html>
   <html>
   <head>
@@ -23,6 +26,9 @@
   </ul> 
 
   <br><br>
+  <!--
+    Inizia il form per raccogliere i dati da inviare al database  
+  -->
   <form action="/authregistrer" method="POST">
     <div class="row">
       <div class="column">
@@ -86,7 +92,9 @@
       <div class="column">
         <div class="card">
           <h2>Zone *</h2>
-         
+           <!--
+            cliccando sul bottone si apre il modale che permette di inserire la propria zona di interesse su una mappa e ne estra il raggio di azione  
+            -->
           <button type="button" id="findzone">Click here to find your zone</button>
          
         </div>
@@ -97,7 +105,7 @@
 
   <div id="searchZoneInfo" class="modal">
 
-    <!-- Modal content -->
+    <!-- Modale -->
     <div class="modal-content">
       <span class="close">&times;</span>
       <object  style="width: 100%; height: 92%;" data="searchZone.html"> </object>
@@ -114,23 +122,25 @@
   <input type="submit" name="" value=' Submit '><br>
   </form>
 
-
+ <!--
+  script che permette di aprire il modale e visualizzare la mappa  
+  -->
     <script>
-        // Get the modal
+        // prende il modale
         var modal = document.getElementById("searchZoneInfo");
 
-        // Get the button that opens the modal
+        // prende il bottone che apre il modale
         var btn = document.getElementById("findzone");
 
-        // Get the <span> element that closes the modal
+        // prende l'elemento <span> che chiude il modale
         var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks the button, open the modal 
+        // quando l'utente clicca sul bottone apre il modale
         btn.onclick = function() {
           modal.style.display = "block";
         }
 
-        // When the user clicks on <span> (x), close the modal
+        // quando l'utente clicca su <span> (x), chiude il modale
         span.onclick = function() {
           modal.style.display = "none";
           document.getElementById("latitude").value =  $.jStorage.get("cordLatitute");
@@ -138,7 +148,7 @@
           document.getElementById("rad").value =  $.jStorage.get("cordRadianti");
         }
 
-        // When the user clicks anywhere outside of the modal, close it
+        // quando l'utente clicca una qualsiasi zuona fuori dal modale, lo chiude
         window.onclick = function(event) {
           if (event.target == modal) {
             modal.style.display = "none";

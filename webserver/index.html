@@ -1,3 +1,6 @@
+<!--
+Questa è la pagina che permette il login dell'utente, nel caso in cui i dati siano sbagliati viene visualizzato un popup e viene chiesto di reinserire i dati corretti
+-->
   <!DOCTYPE html>
   <html>
   <head>
@@ -7,6 +10,10 @@
       <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
   </head>
   <body>
+
+<!--
+script che permette l'animazione riguardante le frasi ai lati del login
+-->
     <script type="text/javascript">
 
     var mycontent=new Array()
@@ -23,6 +30,7 @@
       scontent.innerHTML = "<span id='messageInnerS'>"+mycontent[y]+"</span>";
       i = ( i == mycontent.length-2) ? 0 : i + 2
       y = ( y == mycontent.length-1) ? 1 : y + 2
+      // timeout per il cambio della sequenza di frasi
       setTimeout("altercontent()", 3000)
     }
 
@@ -60,6 +68,9 @@
     </div>
      </form>
 
+<!--
+script che invia messaggio di errore se i dati inseriti risultano errati, di successo altrimenti
+-->
   <script>
     $.ajax({
          ....
