@@ -3,23 +3,23 @@ const path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var sql = require("mysql");
-const multer = require("multer");
-var app = express();
-const router = express.Router();
+var app = express(); //inizializzazione del framework express
+const router = express.Router(); //router consentirà alla web app di riconoscere gli end point
 const port = 3000;
 var idCurrentUser;
 var zoneInteresse = [];
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
+//la webapp parserà sia le richieste dal form da oggetto a stringa.
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-app.use(express.static(__dirname)); //dico al servizio di utilizzare i file statici in questo percorso
-app.set('view engine', 'ejs'); //preparo il servizio a renderizzare i template .ejs
+app.use(express.static(__dirname)); //la web app utilizzerà i file statici presenti nella cartella 'public'
+app.set('view engine', 'ejs');
 
 
-//definisco i dati di configurazione per il database
+//configurazione del database 
 var dbConfig = {
 	user: 'root',
 	password: '',
@@ -27,33 +27,36 @@ var dbConfig = {
 	database: 'db_hud'
 };
 
-//
+
+//inizializzazione della sessione
 app.use(session({
 	secret: 'asdgfva5',
 	resave: true,
 	saveUninitialized: true,
-})); 
-
-app.use(router); //preparo il servizio ad utilizzare il reindirizzarmento da un url ad una pagina
+}));
 
 
 
-//tentativo di connessione al database
+app.use(router);
+
 var con = sql.createConnection(dbConfig);
+
+
+//primo tentativo di connessione al database
 con.connect(function(err) {
 	if (err) throw err;
 	console.log("DB correttamente connesso!");
 });
 
-
-//endpoint che definisce il reindirizzamento per la home page
 app.get('/', (req, res) => {
-
+	
  	res.redirect('/homepage');
+
 });
 
 
-//metodo delete di un evento
+//metodo DELETE implementato sull'evento con id 'eventID'.
+//esempio di richiesta -> localhost:3000/events/3 dove '3' è l'id dell'evento da eliminare dal database.
 app.delete("/delevents/:eventID", (req, result) => {
 	con.query(`DELETE FROM post WHERE id = ${req.params.eventID}`, (err, res) => {
 		if (err) {
@@ -62,6 +65,7 @@ app.delete("/delevents/:eventID", (req, result) => {
 			return;
 		}
 		if (res.affectedRows == 0) {
+			// not found Customer with the id
 			result({
 				kind: "not_found"
 			}, null);
@@ -72,7 +76,8 @@ app.delete("/delevents/:eventID", (req, result) => {
 	});
 });
 
-//recupero le informazioni dell'evento con id 'eventID'
+//metodo GET implementato sull'evento con id 'eventID'.
+//esempio di richiesta -> localhost:3000/events/3 dove '3' è l'id dell'evento da ricercare.
 app.get("/events/:eventID", (req, result) => {
 	con.query(`SELECT * FROM post WHERE id = ${req.params.eventID}`, (err, res) => {
 		if (err) {
@@ -89,7 +94,9 @@ app.get("/events/:eventID", (req, result) => {
 	});
 });
 
-//Aggiorno l'evento nel db con ID 'eventID'
+
+//metodo UPDATE implementato sull'evento con id 'eventID'.
+//esempio di richiesta -> http://localhost:3000/updatevents/3?newname=FestaInMaschera&newprice=34euro dove '3' è l'id dell'evento da aggiornare ed i parametri 'newname' e 'newprice' sono i valori da modificare.
 app.put("/updatevents/:eventID", (req, result) => {
 	con.query(`UPDATE post SET full_text = ?, price =  ? WHERE id = ${req.params.eventID}`, [req.query.newname, req.query.newprice], (err, res) => {
 		if (err) {
@@ -106,8 +113,8 @@ app.put("/updatevents/:eventID", (req, result) => {
 	})
 });
 
-
-//end point che permette l'inserimento dell'evento nel db
+//metodo POST implementato sull'evento'.
+//Il metodo POST sull'endpoint /create_event consente la creazione nel database di un nuovo evento utilizzando i valori passati nei campi del form del frontend dall'utente. 
 app.post("/create_event", (req, res)  => {
 	var queryCords = req.body.latitude + ";" + req.body.longitude + ";" + req.body.rad;
 	console.log(req.session)
@@ -117,7 +124,9 @@ app.post("/create_event", (req, res)  => {
 });
 
 
-
+// '/homepage' è l'end point che ritorna la pagina in cui sono presenti tutti gli eventi che rientrano nella zona di interesse dell'utente. 
+//	le coordinate scelte dall'utente sono definite nell'oggetto req.session.zone nel seguente formato : "latitudine;longitudine;radianti"
+// la query recupera tutti gli eventi presenti nel db e i relativi creatori dell'evento per poi renderizzarli dinamicamente sul template .ejs.
 app.get('/homepage', (req, res) => {
 	if (req.session.loggedin) {
 		var latitude = req.session.zone.split(";")[0];
@@ -148,6 +157,7 @@ app.get('/homepage', (req, res) => {
 });
 
 
+//questa funzione torna il valore delle coordinate se queste rientrano nella zona di interesse dell'utente		
 function getCloserEvents(stringCoords, our_lat, our_lng, our_rad) {
 	var x = stringCoords.zone.split(";")[1];
 	var y = stringCoords.zone.split(";")[0];
@@ -169,7 +179,7 @@ app.get('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
 	 req.session.destroy(() => {
-   req.session =  null;
+   req.session=  null;
    res.redirect("/"); 
   });
 });
@@ -238,7 +248,8 @@ app.post("/edit", function(req, res) {
 
 
 
-
+//l'end point /auth è un middleware che si interfaccia con il database per verificare la corretteza dell'utenza inserita.
+//in caso di utenza corrispondente, il middleware crea una sessione ed inizializza le variabili del caso.
 app.post('/auth', function(request, response) {
 	var username = request.body.email;
 	var password = request.body.pw;
