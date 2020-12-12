@@ -62,7 +62,7 @@ I dati relativi alle card vengono estrapolate dal database e inserite nella home
       <div class="card" id="<%= i %>">
         <h3 ><%= event[i].event_title %></h3>
         <p>Price: <%= event[i].price %></p><br>
-        <p> Desc <%= event[i].full_text %></p><br>         
+        <p> <%= event[i].full_text %></p><br>      
         </div>
         <br>
       </div>
@@ -104,7 +104,7 @@ La classe bg-modal è nascosta quando si apre la pagina e viene mostrata solo qu
           <p id= 'p<%=i%>'>Category: <%=event[i].categoria %></p>
           <p id= 'p<%=i%>'>Owner name: <%=event[i].name %></p>
           <p id= 'p<%=i%>'>Price: <%=event[i].price %></p>
-          
+          <button type="button" id="apply<%=i%>">Apply</button>   
       <div class="close" id = "close<%=i%>">+</div>
     </div>
   </div>
@@ -176,7 +176,6 @@ La classe mapmodal permette di mostrare la mappa per inserire la zona dell'event
     <script> 
       document.getElementById('<%=i%>').addEventListener('click', function(){
       document.getElementById('bg<%=i%>').style.display = 'flex';
-      document.querySelector('body').style.overflow = 'hidden';
       });
     </script>
      <%  } %>
@@ -186,7 +185,15 @@ La classe mapmodal permette di mostrare la mappa per inserire la zona dell'event
     <script>
     document.getElementById('close<%=i%>').addEventListener('click', function(){
       document.getElementById('bg<%=i%>').style.display = 'none';
-      document.querySelector('body').style.overflow = 'auto';
+    });
+
+  </script>
+    <%  } %>
+
+    <% for(var i = 0; i < event.length; i++) { %>
+    <script>
+    document.getElementById('apply<%=i%>').addEventListener('click', function(){
+      document.getElementById('bg<%=i%>').style.display = 'none';
     });
 
   </script>
